@@ -38,3 +38,21 @@ print(str2.index(' ',0,4)) #3
 '''
 # print(str2.index(' ',-1,-11))
 
+"""
+列表
+可不同类型
+可变数据类型：任意增加/删除
+遍历、排序、反转
+"""
+lst1 = [100, 'LBJ', 5.0+9.0j, [1,'tom']]
+print('LBJ' in lst1)
+print(lst1[3])
+print(lst1.index(5.0+9.0j,1,3))
+print(lst1.count('LBJ'))
+print(lst1[:: 2])
+print(lst1[::-1]) #容器反转
+print(lst1[1::2])
+
+lst1[2] = 'james' #替换元素
+print(lst1)
+
