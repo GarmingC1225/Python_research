@@ -56,3 +56,24 @@ print(lst1[1::2])
 lst1[2] = 'james' #替换元素
 print(lst1)
 
+ls1 = ['curry',789,20.6,[1,3,2]]
+ls2 = [1,2,3,9,5,60]
+ls3 = ['bro','sister']
+ls1[0:3] = ls2[0:3] #替换ls1列表0-2个元素为ls2 0-2个元素
+print(ls1)
+print(ls2)
+ls2[0:2] = ls3
+print(ls2)
+ls1[0:4:2] = ls3
+print(ls1)
+print(ls1[1:4:-1])  #为空[] 因为步长为负数表列表反转来排，则原本下标为1的应为最左边的元素
+print(ls1[3:1:-1])
+ls1[3:1:-1] = ls3   #倒转后的列表替换元素按照ls3的顺序将指定位置替换
+print(ls1)
+del ls1[0:1]
+print(ls1)
+del ls1[::2]
+print(ls1)
+print(ls2)
+ls2.extend(ls1)
+print(ls2)
