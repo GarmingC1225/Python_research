@@ -77,3 +77,36 @@ print(ls1)
 print(ls2)
 ls2.extend(ls1)
 print(ls2)
+
+l1 = [74,5,6,78,9]
+l1.append(10) #列表最后追加元素
+print(l1)
+l2 = l1.copy() #复制列表的元素
+print(l2)
+l2.clear() #删除列表的所有元素
+print(l2)
+print(l1.pop(0)) #返回列表索引为0的元素并删除它
+print(l1)
+print(id(l1))   #获取对象的内存地址
+print(l1)
+l1.reverse()    #翻转列表
+print(l1)
+l1.sort()   #排序列表 默认升序
+print(l1)
+l1.sort(reverse=True) #更改为降序
+print(l1)
+
+for item in l1:     #遍历列表
+    print(item, end='|')
+print('\n')
+
+i = 0
+for item in range(0,len(l1),2): #用range()遍历来指定列表
+    l2.append(l1[item])
+print(l2)
+
+l3 = []
+while i < len(l2):
+    l3.append(l2[i] + l2[i])
+    i += 1
+print(l3)
