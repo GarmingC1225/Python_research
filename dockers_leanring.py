@@ -2,6 +2,7 @@
 容器
 1.操作符：切片、字符串链接
 2.操作方法：取长、取最大小、index()、count()
+3.遍历列表、列表推导式创建列表
 '''
 str = 'asdfghjkl'
 #切片
@@ -110,3 +111,61 @@ while i < len(l2):
     l3.append(l2[i] + l2[i])
     i += 1
 print(l3)
+
+'''
+    for循环创建简单列表
+'''
+alist = [x for x in range(11)] #列表推导式
+print(alist)
+alist2 = []
+for x in range(0,11,1):     #range()里面的stop是开区间
+    alist2.append(x)
+print(alist2)
+
+'''
+    for循环中使用if分支创建列表
+'''
+#创建1-10偶数平方的列表
+alist3 = []
+for x in range(11):
+    if(x % 2 == 0):
+        x **= 2
+        alist3.append(x)
+print(alist3)
+#用推导式表示
+alist3_t = [x **2 for x in range(11) if x % 2 == 0]
+print(alist3_t)
+
+'''
+    多重for循环创建列表
+'''
+alist4 = []
+for x in range(3):
+    for y in range(3):
+        alist4.append((x, y))
+print(alist4)
+#推导式表示
+alist4_t = [(x, y) for x in range(3) for y in range(3)]
+print(alist4_t)
+
+'''
+    列表推导式使用函数
+'''
+#将所有字符转换成小写字符
+alist5 = ['Constitutional','Adquate','Crystal','Cynicism']
+for x in alist5:
+    print(x.lower())
+#推导式表示
+alist5_t = [x.lower() for x in alist5]
+print(alist5_t)
+
+#practice
+lst_prac = ['456312', 'charter', 'hasten', 'convergence', 'penguin']
+lst_prac.insert(2,'valley')
+print(lst_prac)
+lst_prac[3:5] = "disintegration", 100 #替换原本的元素值
+print(lst_prac)
+vector1 = [x for x in range(-5,10,2)]
+print(vector1)
+vector2 = ''.join([chr(ord('a')+x) for x in range(26) ])
+print(vector2)
