@@ -3,6 +3,7 @@
 1.操作符：切片、字符串链接
 2.操作方法：取长、取最大小、index()、count()
 3.遍历列表、列表推导式创建列表
+4.元组的基本操作、与列表的转换
 '''
 str = 'asdfghjkl'
 #切片
@@ -169,3 +170,36 @@ vector1 = [x for x in range(-5,10,2)]
 print(vector1)
 vector2 = ''.join([chr(ord('a')+x) for x in range(26) ])
 print(vector2)
+
+'''
+    元组的基本操作
+'''
+tup1 = ('exceedingly','repertoire','acid',2004,5.2+8.8j)
+print(tup1)
+tup2 = 'amid','ammunition','artful','tactful',4     #声明元组的圆括号可省略
+print(tup2)
+tup3 = ('familiarity',)     #元组只有一个元素的时候后面的逗号不可省略
+print(tup2 + tup3)      #实现元组的连接
+print(tup1[4])  #访问元组元素
+print(len(tup1),max(tup3[0]))
+print(tup1.index(2004))
+print(help(tuple))  #显示元组的属性和方法
+tup_lst = (2005,'元组是不可变序列',[5,'comvergency',88.8])
+tup_lst[2][0] = 'list_type'     #元组里的列表元素可以改变值
+print(tup_lst)
+'''
+    元组与列表的相互转换
+'''
+#元组 -> 列表
+tup4 = ('division','frequency',2006,999.9)
+lst_t4 = list(tup4)   #变成列表后可以进行修改操作
+print(lst_t4)
+lst_t4[2] = 1996
+print(lst_t4)
+
+#列表 -> 元组
+tup4_lst = tuple(lst_t4)
+print(tup4_lst)
+
+
+
