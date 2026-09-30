@@ -4,6 +4,7 @@
 2.操作方法：取长、取最大小、index()、count()
 3.遍历列表、列表推导式创建列表
 4.元组的基本操作、与列表的转换
+5.生成器
 '''
 str = 'asdfghjkl'
 #切片
@@ -201,5 +202,13 @@ print(lst_t4)
 tup4_lst = tuple(lst_t4)
 print(tup4_lst)
 
+#生成器 生成器对象
+gen1 = ((i**2) for i in range(10,20))
+print(gen1)#？？？
+print(list(gen1))
+gen2 = ((i+2) for i in range(10) if (i%2==0))
+print(gen2.__next__())  #单步迭代遍历？？
+print(gen2.__next__())
+print(list(gen2))
 
 
