@@ -6,17 +6,19 @@
 4.元组的基本操作、与列表的转换
 5.生成器
 '''
-str = 'asdfghjkl'
+from test2_class import str1
+
+str1 = 'asdfghjkl'
 #切片
-print(str[4])   #g
-print(str[:4]) #asdf
-print(str[-4])  #h
-print(str[-4:-2])   #hj
-print(str[:9])  #0-8 默认步长为1
-print(str[::3]) #afj
+print(str1[4])   #g
+print(str1[:4]) #asdf
+print(str1[-4])  #h
+print(str1[-4:-2])   #hj
+print(str1[:9])  #0-8 默认步长为1
+print(str1[::3]) #afj
 #字符串链接
-print(str*2)    #asdfghjklasdfghjkl
-print(str+' 33')    #asdfghjkl 33
+print(str1*2)    #asdfghjklasdfghjkl
+print(str1+' 33')    #asdfghjkl 33
 
 str2 = 'the belt and road initative'
 print(len(str2))    #取序列长度包括空格
@@ -203,12 +205,49 @@ tup4_lst = tuple(lst_t4)
 print(tup4_lst)
 
 #生成器 生成器对象
-gen1 = ((i**2) for i in range(10,20))
-print(gen1)#？？？
-print(list(gen1))
+gen1 = ((i**2) for i in range(10,20))   #创建生成器对象gen1
+print(gen1)     #打印该生成器的对象类型+地址
+print(list(gen1))   #list()强制遍历生成器
 gen2 = ((i+2) for i in range(10) if (i%2==0))
-print(gen2.__next__())  #单步迭代遍历？？
+print(gen2.__next__())  #单步迭代遍历，一次性计算输出
 print(gen2.__next__())
 print(list(gen2))
+gen2 = ((i+2) for i in range(10) if (i%2==0)) #已经单步后，想重新完整计算遍历需要重新定义
+for j in gen2:  #for循环遍历生成器对象
+    if (j == 10):
+        print(j)    #print()函数end参数默认换行
+        break
+    print(j,end=',')
+
+'''
+    序列解包
+'''
+tuple1 = (False, 3, "complacency")
+x,y,z = tuple1  #序列解包
+print(x,y,z)
+#map()函数
+m, n, p = map(str, range(3))    #map()函数将对象映射给str再做解包
+print(m, n, p)
+#列表解包
+lst_x = [1,3,2,4]
+a,b,c,d = lst_x #序列解包
+print(a,c)
+#字典解包
+dicts_x = {'a':1,'b':2,'c':3}
+v1,v2,v3 = dicts_x  #字典序列解包，默认对键进行操作
+print(v1,v2,v3)
+x,y,z = dicts_x.items() #字典方法items() 使解包对键值对操作
+print(x,y,z)
+x2,y2,z2 = dicts_x.values() #字典方法values() 使解包对值进行操作
+print(x2,y2,z2)
+#内置函数enumerate()的序列解包
+lst_e = ['s','t','u','n']
+for i,x in enumerate(lst_e):    #i作为索引
+    print(i,x)
+#'*'星号解包
+print([9,8,74,5,6])
+print(*[9,8,74,5,6])
+print(tuple(range(4)))
+print(*range(4))
 
 
