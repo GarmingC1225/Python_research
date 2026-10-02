@@ -5,6 +5,7 @@
 3.遍历列表、列表推导式创建列表
 4.元组的基本操作、与列表的转换
 5.生成器
+6.字典的基本操作、字典的常用方法
 '''
 from test2_class import str1
 
@@ -249,5 +250,88 @@ print([9,8,74,5,6])
 print(*[9,8,74,5,6])
 print(tuple(range(4)))
 print(*range(4))
+
+'''
+    字典的基本操作
+'''
+#创建字典
+dict1 = {}
+dict2 = {"id": 1, "name": "rose", "address": "cdsklajf", "phone": "+1 234 567", "email": ""}    #经典
+dict3 = dict(id=2, name="vibration", address="beijing")     #dict()函数+关键字参数
+dict4 = dict([("id",101),("name",'delicious'),("email",'')])       #dict()函数+键值对序列
+print(dict2)
+print(dict3)
+print(dict4)
+
+#检索字典元素
+dict5 = {"id": 10, "name":"provocation", "address":"interruption"}
+print('id' in dict5)    #in 运算符检索
+print('provation' in dict5)
+print(dict5['id'])      #关键字检索
+tu1 = (dict5['id'], dict5['name'], dict5['address'])
+print(tu1,type(tu1))
+
+#添加、修改字典元素
+dict6 = {1:'bridegroom',2:'bride',3:'groom'}
+print(dict6)
+dict6[3] = 'master' #键3存在则修改值
+print(dict6)
+dict6[4] = 'promoted' #键4不存在则添加值
+print(dict6)
+
+'''
+    字典的常用方法
+'''
+#keys()
+dicts = {'w1':'hypothetical','w2':'psychiatric','w3':'cynicism'}
+key1 = dicts.keys()     #所有键信息
+print(type(key1))
+print(key1)
+for k in key1:
+    print(k,end=',')
+#values()
+values1 = dicts.values()    #所有值信息
+print()
+for v in values1:
+    print(v,end=',')
+#items()
+items1 = dicts.items()      #所有键值对信息
+print()
+for items in items1:
+    print(items,end='|')
+print()
+# get()
+print(dicts.get('w1'))  #返回键存在的相应值
+print(dicts.get('w4'))  #键不存在返回默认值，默认为None
+print(dicts.get('w4','202'))    #设置默认值
+#pop()
+print(dicts.pop('w3'))  #返回键存在相应值并删除此键值对
+print(dicts)
+print(dicts.pop('w4','查无此词'))   #键不存在返回默认值
+#popitem()
+print(dicts.popitem())  #删除字典最后的键值对
+print(dicts)
+print(dicts.popitem())
+print(dicts)
+#copy()
+dicts = dict6.copy()    #复制字典
+print(dicts)
+print(id(dicts),id(dict6)) #3111703166208 3111703166144
+print(dicts is dict6)
+dicts[2] = 'homogeneous' #需改副本字典不影响原字典的值
+print(dicts)
+print(dict6)
+#update()
+dict_u1 = {1:'fertilizer','w2':'buffalo',3.0:'plaintiff'}
+print(dict_u1)
+dict_u2 = {'w1':"prompt",'w2':'respond',3:'jeff'}
+print(dict_u2)
+dict_u1.update(dict_u2)     #更新dict_u1字典
+# 原则：保留原本有的而2中没有的；修改与2中键一样的为2中的值；添加只有2中存在的键值对
+
+
+
+
+
 
 
