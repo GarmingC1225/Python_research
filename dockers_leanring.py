@@ -6,6 +6,7 @@
 4.元组的基本操作、与列表的转换
 5.生成器
 6.字典的基本操作、字典的常用方法
+7.集合的基本操作、集合的运算
 '''
 from test2_class import str1
 
@@ -329,7 +330,54 @@ print(dict_u2)
 dict_u1.update(dict_u2)     #更新dict_u1字典
 # 原则：保留原本有的而2中没有的；修改与2中键一样的为2中的值；添加只有2中存在的键值对
 
+'''
+    集合的基本操作
+'''
+#创建集合
+aset = set('speculation')   #set()函数
+bset = set([58,5,4,5,6])
+cset = set()
+print(aset,bset,cset)
 
+#常用操作
+cset = bset.copy()  #copy()
+print(aset,bset,cset)
+
+bset.add('y')   #add()添加元素
+print(bset)
+
+print(bset.pop())  #pop()随机选择移除
+print(bset)
+
+print(bset.isdisjoint(aset))    #isdisjoint()判断集合中是否存在相同元素
+
+print(len(aset))    #计算集合元素个数
+
+cset.clear()    #clear()移除集合所有元素
+print(cset)
+
+#集合的遍历
+for k in aset:
+    print(k,end="-")
+print()
+
+"""
+    集合的运算
+"""
+cal_set1 = set([10,20,30])
+cal_set2 = set([20,30,40])
+set1 = cal_set1 & cal_set2  #交集运算
+set2 = cal_set1 | cal_set2  #并集运算
+set3 = cal_set1 ^ cal_set2  #补集运算
+set4 = cal_set1 - cal_set2  #差集运算 //{10}
+print(set1)
+print(set2)
+print(set3)
+print(set4)
+
+print(set1 < cal_set1)  #子集运算 判断set1是否其真子集
+print(cal_set1 > set1)  #超集运算 判断cal_set1是否其超真集
+print(cal_set1 > set2)  #False
 
 
 
