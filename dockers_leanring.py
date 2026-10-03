@@ -8,7 +8,6 @@
 6.字典的基本操作、字典的常用方法
 7.集合的基本操作、集合的运算
 '''
-from test2_class import str1
 
 str1 = 'asdfghjkl'
 #切片
