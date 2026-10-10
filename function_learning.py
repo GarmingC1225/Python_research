@@ -3,6 +3,7 @@
 1.定义、调用
 2.嵌套
 3.函数的参数、返回值
+4.匿名函数lambda
 '''
 
 '''
@@ -133,10 +134,25 @@ print(test)
 #查找参数中含有字符e的单词
 def findword_e(sentence):
     result = []
-    words = sentence.split()#???
+    words = sentence.split()#字符串分隔，默认空格分
+    print(words)
     for word in words:
-        if word.find('e') != -1:#???
+        if word.find('e') != -1:#查找字符串的子串，未找到输出-1
             result.append(word)
     return result
 ss = "The people are the Country, put the people First"
 print(findword_e(ss))
+
+"""
+    lambda匿名函数
+"""
+import math
+area = lambda r: math.pi * r * r
+volume = lambda r,h: math.pi * r * r * h
+print("圆的面积为：{:6.2f}".format(area(2)))
+print("圆柱体体积为：{:6.2f}".format(volume(2,4)))
+#按照绝对值大小升序
+lst1 = [6,-1,9,-2,-4,10]
+lst2 = sorted(lst1, key= lambda x: abs(x))      #key参数为排序规则函数
+print(type(lst2))
+print(lst2)
