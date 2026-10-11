@@ -4,6 +4,8 @@
 2.嵌套
 3.函数的参数、返回值
 4.匿名函数lambda
+5.递归函数
+6.变量作用域
 '''
 
 '''
@@ -156,3 +158,123 @@ lst1 = [6,-1,9,-2,-4,10]
 lst2 = sorted(lst1, key= lambda x: abs(x))      #key参数为排序规则函数
 print(type(lst2))
 print(lst2)
+
+"""
+    递归函数
+"""
+#斐波那契数列
+def fib(i):
+    if i == 0:
+        return 0
+    elif i == 1:
+        return 1
+    else:
+        return fib(i-1) + fib(i-2)
+
+if __name__ == '__main__':  #入口判断语句，此文件被import时不会自动执行此后面的打印操作
+    print(fib(8))
+#阶乘迭代
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+print(factorial(5))
+#for循环版阶乘
+def factorial(n):
+    t = 1
+    for i in range(1,n+1):
+        t *= i
+    return t
+print(factorial(5))
+
+#反转字符串
+def func(s):
+    if len(s) <= 1:
+        return s
+    return func(s[1:]) + s[0]
+s = "abcde"
+result = func(s)
+print(result)
+
+'''
+    变量作用域
+'''
+#局部变量
+def func1(x,y):
+    x1 = x
+    y1 = y
+    z = 100
+    print(x1)
+    print(y1)
+    print(z)
+    func2()
+    return
+def func2():
+    x1 = 10
+    y1 = 20
+    z = 0
+    print(x1)
+    print(y1)
+    print(z)
+func1('a','b')
+'''
+    全局变量
+'''
+basis = 100#此为全局变量
+def func3(x,y):
+    sum = basis + x + y
+    return sum
+def func4(x,y):
+    avg = (basis + x * 0.9 + y * 0.8) / 3
+    return avg
+if __name__ == '__main__':
+    score1 = func3(10,20)
+    score2 = func4(10,20)
+    print(score1)
+    print(score2)
+    print(basis)
+    print('-'*40)
+
+#同名全局变量的局部变量
+def func5(x, y):
+    basis = 90  #与全局同名，但是是局部变量
+    sum = basis + x + y
+    return sum
+print("{:-<10.2f}".format(func5(10,20)))
+print(basis)#全局变量仍然没有变化
+
+#函数中先使用全局变量，在定义同名的局部变量，报错
+def func6(x, y):
+    #print(basis)#先使用了全局，没有提前定义
+    basis = 99
+    sum = basis + x + y
+    return sum
+print("{:-<10.2f}".format(func6(10,20)))
+print(basis)
+print('-'*40)
+
+'''
+    global语句
+'''
+b = 100
+def func7(x, y):
+    global b #声明b是函数外的全局变量
+    print(b)
+    b = 90
+    sum = b + x + y
+    return sum
+print(func7(10,20))
+print(b)
+'''
+    nonlocal关键字
+'''
+def func8():
+    x = 10  #外层函数局部变量
+    def func9():
+        nonlocal x  #为修改外层变量，nonlocal关键字声明
+        x = 99.9
+    func9()
+    print(x)
+    return
+func8()
