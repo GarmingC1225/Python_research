@@ -6,6 +6,7 @@
 4.文件的定位读写
 5.读写二进制文件
 6.读写Python对象
+7.文件和目录操作
 '''
 #open()
 mf = open('D:\\test.txt','r',encoding='utf-8')
@@ -128,3 +129,48 @@ x = pickle.load(file_b5)
 y = pickle.load(file_b5)
 print(x,y)
 file_b5.close()
+
+'''
+    文件和目录操作
+'''
+#文件的复制
+import shutil
+print(shutil.copy(r'D:\test.txt',r'D:\mydata.dats'))
+
+#文件的删除
+import os, os.path
+fname = r"D:\mydata.dats"
+if os.path.exists(fname):   #判断删除的文件是否存在
+    os.remove(fname)
+else:
+    print("文件{}不存在".format(fname))
+
+#文件的重命名
+import os, os.path, sys
+fn = input("请输入需要更名的文件：")
+gn = input("请输入更名后的文件名：")
+if not os.path.exists(fn):
+    print("文件{}不存在".format(fn))
+    sys.exit(0) #???
+elif os.path.exists(gn):
+    print("重命名文件{}已经存在".format(gn))
+    sys.exit(0)
+else:
+    os.rename(fn,gn)
+    print("重命名成功！")
+
+#文件的目录操作
+import os
+print(os.getcwd())  #查看当前目录
+print(os.listdir())     #查看当前目录中的文件---列表形式输出
+print(os.listdir('D:\\'))   #查看指定目录中的文件
+print(os.mkdir(r'D:\test_pyFile'))  #创建目录/文件夹
+print(os.listdir(r'D:\test_pyFile'))
+print(os.mkdir(r"D:\test_pyFile\bin_File"))     #创建多级目录
+print(os.mkdir(r"D:\test_pyFile\txt_File"))
+print(os.listdir(r"D:\test_pyFile\bin_File"))
+print(os.listdir(r"D:\test_pyFile\txt_File"))
+#删除存在内容的目录
+import shutil
+print(shutil.rmtree(r"D:\test_pyFile"))
+print(os.listdir(r"D:\test_pyFile"))
