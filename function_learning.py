@@ -95,7 +95,7 @@ def showmessage(name, age = 18):
     return
 showmessage(age = 19, name="Curry")     #传入默认参数使用新值
 print("-" * 40)
-showmessage(name = "kelvin")        #为传入默认参数则用默认值
+showmessage(name = "kelvin")        #未传入默认参数则用默认值
 '''
     可变参数
 '''
