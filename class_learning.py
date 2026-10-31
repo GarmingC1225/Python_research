@@ -7,6 +7,7 @@
     self参数
     类中的变量：成员变量，类变量
     类中的方法：成员方法、类方法、静态方法
+    类的继承：继承实现、方法重写、super()方法、python的多继承
 """
 from pydantic import color
 
@@ -149,3 +150,43 @@ obj = DemoClass3()  #创建对象
 obj.instanceMethod2()   #对象调用成员方法
 obj.staticMethod()  #对象调用静态方法
 DemoClass3.staticMethod()   #类调用静态方法
+
+"""实现继承"""
+#子类继承父类
+class Animal:#父类
+    num = 0 #类变量
+    def __init__(self):#成员方法：构造方法
+        print("父类Animal")
+    def show(self):#成员方法方法
+        print("父类Animal成员方法")
+class Cat(Animal):#子类继承Animal父类
+    def __init__(self):
+        print("构建子类Cat")
+    def run(self):
+        print("子类Cat成员方法")
+cat = Cat()#创建对象cat并自动调用构造函数初始化
+cat.run()#子类自己的方法
+cat.show()#调用父类的方法show()
+print(cat.num)#调用父类的类变量
+"""方法重写：子类重写的方法需和父类被重写的方法具有相同的方法名和参数列表"""
+class Animal:
+    def __init__(self,isAnimal):
+        self.isAnimal = isAnimal
+    def run(self):
+        print("父类Animal通用的run()方法")
+    def show(self):
+        print("父类Animal的show()方法")
+class Cat(Animal):
+    def __init__(self):
+        print("子类的构造方法")
+    def run(self):  #方法重写
+        super().run()#super()--->父类Animal 实现拓展而非替代
+        print("子类cat重写的run()方法")
+ani = Animal(False)
+ani.show()
+cat = Cat()
+cat.run()
+cat.show()#调用父类方法
+
+
+
