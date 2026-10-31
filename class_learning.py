@@ -187,6 +187,24 @@ ani.show()
 cat = Cat()
 cat.run()
 cat.show()#调用父类方法
+"""多继承"""
+class Phone:
+    def receive(self):#成员变量
+        print("接电话")
+    def send(self):
+        print("打电话")
+class Message:
+    def receiveMsg(self):
+        print("接收短信")
+    def sendMsg(self):
+        print("发送短信")
+class Mobile(Phone,Message):#同时继承Phone和Message
+    pass
+mobile = Mobile()#创建对象mobile
+mobile.receive()
+mobile.send()
+mobile.receiveMsg()
+mobile.sendMsg()
 
 
 
