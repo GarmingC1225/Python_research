@@ -8,6 +8,7 @@
     类中的变量：成员变量，类变量
     类中的方法：成员方法、类方法、静态方法
     类的继承：继承实现、方法重写、super()方法、python的多继承
+    类的多态
 """
 from pydantic import color
 
@@ -205,6 +206,38 @@ mobile.receive()
 mobile.send()
 mobile.receiveMsg()
 mobile.sendMsg()
+"""
+类的多态：狗、猫都继承了动物这个类，类中有个叫喊的方法
+由于对象不同（狗、猫），则同一个方法的执行效果不同
+实现组成：继承、重写、同一接口（包含重写方法）
+"""
+class Animal:
+    def __init__(self,name):
+        self.name = name
+    def enjoy(self):
+        print("jiongjiongjiong")
 
+class Cat(Animal): #继承Animal
+    def enjoy(self):#成员方法
+        print(self.name,"miaomiaomiao")
 
+class Dog(Animal):
+    def enjoy(self):#成员方法
+        print(self.name,"wangwangwang")
+
+class Person:
+    def __init__(self,id,name):
+        self.id = id
+        self.name = name
+    def drive(self,ani):
+        ani.enjoy()#包含enjoy()方法，同一接口不同对象实现多态
+cat = Cat("Mikey")#创建对象cat
+dog = Dog("Dahuang")#创建对象dog
+person = Person(99,"curry")
+#多态效果
+person.drive(cat)
+person.drive(dog)
+#父类实例实现多态
+obj_Animal = Animal("dengdeng") #创建父类的实例对象
+person.drive(obj_Animal)
 
